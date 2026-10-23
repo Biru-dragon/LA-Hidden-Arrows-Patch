@@ -27,6 +27,14 @@ GUIDE_FILTER = re.compile(
     re.DOTALL,
 )
 
+# Source/Target filter: in the function that cleans the toolbar rows, "test r8b,r8b ; je <path that removes IDs 22 and 23>".
+# Replacing the 2-byte `je` (74 57) with two nops always takes the path that keeps every ID.
+SOURCE_TARGET_FILTER = re.compile(
+    rb"\x45\x84\xc0\x74\x57\x4c\x8b\x3d....\x4c\x89\xf5\x4d\x89\xf5\xeb\x1f",
+    re.DOTALL,
+)
+SOURCE_TARGET_JE_OFFSET = 3
+
 
 def executable_ranges(data: bytes) -> list[tuple[int, int]]:
     try:
@@ -58,7 +66,8 @@ def main() -> None:
     code = executable_ranges(bytes(data))
     toolbar = [(m.end(1), m.end(3)) for a, b in code for m in TOOLBAR_FILTER.finditer(data, a, b)]
     guide = [(m.end(1), m.end(2), m.end(3)) for a, b in code for m in GUIDE_FILTER.finditer(data, a, b)]
-    if not toolbar and not guide:
+    source_target = [m.start() + SOURCE_TARGET_JE_OFFSET for a, b in code for m in SOURCE_TARGET_FILTER.finditer(data, a, b)]
+    if not toolbar and not guide and not source_target:
         sys.exit("Nothing to patch: the game is already patched, or this is a different version.")
 
     for limit_offset, exclude_offset in toolbar:
@@ -67,6 +76,8 @@ def main() -> None:
         data[lea_offset] = (-(MAX_ID + 1)) & 0xFF
         data[cmp_offset] = (256 - MAX_ID) & 0xFF
         data[exclude_offset] = 0xFF
+    for je_offset in source_target:
+        data[je_offset:je_offset + 2] = b"\x90\x90"
 
     temp = exe.with_name(exe.name + ".tmp")
     try:
@@ -82,7 +93,7 @@ def main() -> None:
             os.replace(backup, exe)
         temp.unlink(missing_ok=True)
         sys.exit(f"Error: could not replace {EXE_NAME} ({error}). Nothing was changed.")
-    print(f"Done: {len(toolbar)} toolbar and {len(guide)} guide filters patched.")
+    print(f"Done: {len(toolbar)} toolbar, {len(guide)} guide and {len(source_target)} source/target filters patched.")
     if toolbar:
         print(f'The original was renamed "{BACKUP_NAME}".')
 
