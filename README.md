@@ -1,2 +1,28 @@
-# LA-Hidden-Arrows-Patch
-This repo concerns version 20261019 demo of the game Logic Arrows
+### Tools used
+[![MultiExtractor](https://img.shields.io/badge/MultiExtractor-Extraction-orange?style=flat-square&logo=appveyor&logoColor=white)](https://www.multi-extractor.com/)
+[![HxD](https://img.shields.io/badge/HxD-Hex%20Editor-blue?style=flat-square&logo=codeforces&logoColor=white)](https://mh-nexus.de/en/hxd/)
+[![Sysinternals Strings](https://img.shields.io/badge/Sysinternals-Strings-0078D7?style=flat-square&logo=microsoft&logoColor=white)](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)
+[![Notepad++](https://img.shields.io/badge/Notepad++-Text%20Editor-90E528?style=flat-square&logo=notepad%2B%2B&logoColor=black)](https://notepad-plus-plus.org/)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-AI%20Assistant-D97706?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/)
+
+### Requirement
+- [Python 3](https://www.python.org/downloads/)
+
+
+## How to use it
+To find the game executable, from Steam :
+`LIBRARY > Logic Arrows Demo > Manage > Browse local files`
+
+Place the `patch.py` file next to the game executable `Logic Arrows.exe`. 
+
+Copy the path to the folder containing the executable and open the command prompt. (`cmd.exe`)
+
+Close the game if it is open.
+
+In the command prompt, enter the following commands : `cd <your copied path here>` and `python patch.py`
+
+You will have access to most types of arrows with this. However, if you would like two additional level arrows, here is a command block that you can simply paste into your in-game map using `CTRL+V` :
+`BQABeJxtksFvgjAUxt2OJt53fOsFyIgm7qbhsEwPHHZST8aYCg9oAtS0xc0s/NX7B1YKoqA9EErf972P3+vTwKzXweDl79mOijxQjOe2A7+jIeiV8tgmnufBggkMFHwIwb9hhSmaQlijVKDPiTMf1ooTFaCoiFH5oQQPttOpC9P33XzUFLSH44iLJQ2Sa1sWto1NpTjfbqu13+dUsROuUK05Tw9UmERa6eryAp15t97kr0P7CyDwBizUDwK6d4AhKA5WpbPIrbKEgCodDJ1+f+O31H6icuh5zswGxxlKSeNOlrJ+LZ0Ww2QCfgQU4pQfaAobH4pjSBXChQbgD5NKugaDzhnQNAWmZlfMtfQLVcJr1KS22PjEBSIwEiiTBlP9JQ/RvNV1ZNck7BjdjyXrYGAR2Op8RB41unXC5DbbVdcArIvIukP3YJrX3o2H3Z9fy/yz+ntNoSKcVbT1HZVFEGjUUZGSvu52guXjMZSO7vYPNivLNw==`
+
+## How to remove the patch
+Go to the folder containing the game's executable, delete the files `Logic Arrows.exe` and `patch.py` then rename `Logic Arrows.original.exe` to `Logic Arrows.exe` and the patch will then be removed.
