@@ -21,8 +21,12 @@ Close the game if it is open.
 
 In the command prompt, enter the following commands : `cd <your copied path here>` and `python patch.py`
 
+Open the game, go to `Settings` and then click on `Open Saves Folder`. Once done, replace the `player.json` file with the one located in the repository (remember to make a backup of your `player.json` file if you want to keep it).
+
 You will have access to most types of arrows with this. However, if you would like two additional level arrows, here is a command block that you can simply paste into your in-game map using `CTRL+V` :
 `BQABeJxtksFvgjAUxt2OJt53fOsFyIgm7qbhsEwPHHZST8aYCg9oAtS0xc0s/NX7B1YKoqA9EErf972P3+vTwKzXweDl79mOijxQjOe2A7+jIeiV8tgmnufBggkMFHwIwb9hhSmaQlijVKDPiTMf1ooTFaCoiFH5oQQPttOpC9P33XzUFLSH44iLJQ2Sa1sWto1NpTjfbqu13+dUsROuUK05Tw9UmERa6eryAp15t97kr0P7CyDwBizUDwK6d4AhKA5WpbPIrbKEgCodDJ1+f+O31H6icuh5zswGxxlKSeNOlrJ+LZ0Ww2QCfgQU4pQfaAobH4pjSBXChQbgD5NKugaDzhnQNAWmZlfMtfQLVcJr1KS22PjEBSIwEiiTBlP9JQ/RvNV1ZNck7BjdjyXrYGAR2Op8RB41unXC5DbbVdcArIvIukP3YJrX3o2H3Z9fy/yz+ntNoSKcVbT1HZVFEGjUUZGSvu52guXjMZSO7vYPNivLNw==`
 
 ## How to remove the patch
 Go to the folder containing the game's executable, delete the files `Logic Arrows.exe` and `patch.py` then rename `Logic Arrows.original.exe` to `Logic Arrows.exe` and the patch will then be removed.
+
+If you have kept a copy of your `player.json` file, you can place it into your save folder, replacing the existing one to recover your original progress.
